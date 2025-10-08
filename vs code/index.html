@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Document Chat (Frontend)</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- PDF.js and Tesseract via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.5/dist/tesseract.min.js"></script>
+</head>
+<body>
+  <div class="bg-image"></div>
+
+  <div class="app-container">
+    <header>
+      <h1>Student Document Chat</h1>
+      <div id="user-info" class="transparent-panel"></div>
+    </header>
+
+    <main>
+      <section id="login-section" class="card transparent-panel">
+        <h2>Login</h2>
+        <form id="login-form">
+          <label>Student name</label>
+          <input id="username" type="text" required />
+          <label>Password</label>
+          <input id="password" type="password" required />
+          <div class="row">
+            <button id="login-btn" type="submit">Login / Create</button>
+            <button id="logout-btn" type="button" class="hidden">Logout</button>
+          </div>
+        </form>
+        <p class="muted">Notes: Data is stored locally in your browser (localStorage).</p>
+      </section>
+
+      <section id="upload-section" class="card transparent-panel hidden">
+        <h2>Upload document or photos</h2>
+        <input id="file-input" type="file" accept="application/pdf,image/*" multiple />
+        <div id="upload-status" class="muted">No document loaded.</div>
+        <button id="clear-doc" class="small-btn hidden">Clear document</button>
+      </section>
+
+      <section id="chat-section" class="card transparent-panel hidden">
+        <h2>Chat about the document</h2>
+        <div id="doc-preview" class="doc-preview muted">No extracted text yet.</div>
+
+        <div id="chat-window" class="chat-window"></div>
+
+        <form id="chat-form" class="chat-form">
+          <input id="chat-input" placeholder="Ask a question related to the uploaded document..." autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <small class="muted">Frontend-only demo: PDF text extraction (PDF.js) and image OCR (Tesseract.js). Search is performed on-device.</small>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
